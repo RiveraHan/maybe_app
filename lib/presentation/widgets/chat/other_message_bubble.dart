@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:maybe_app/domain/entities/message.dart';
 import 'package:maybe_app/presentation/widgets/chat/image_bubble.dart';
 
 class OtherMessageBubble extends StatelessWidget {
-  const OtherMessageBubble({super.key});
+  final Message message;
+  const OtherMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +19,15 @@ class OtherMessageBubble extends StatelessWidget {
           child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Text(
-                'Other messages',
+                message.text,
                 style: TextStyle(color: colors.onSecondary),
               )),
         ),
         const SizedBox(
-          height: 10,
+          height: 5,
         ),
-        const ImageBubble(),
-        const SizedBox(height: 10)
+        ImageBubble(message.imageUrl!),
+        const SizedBox(height: 5)
       ],
     );
   }
